@@ -2,8 +2,16 @@
 // http://ionicframework.com/docs/theming/
 
 /** Ionic CSS Variables **/
+@font-face {
+  font-family: 'atmospheric';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../assets/fonts/aAtmospheric.ttf');
+}
 :root {
+  
   /** primary **/
+  --ion-font-family: 'atmospheric';
   --ion-color-primary: #3880ff;
   --ion-color-primary-rgb: 56, 128, 255;
   --ion-color-primary-contrast: #ffffff;

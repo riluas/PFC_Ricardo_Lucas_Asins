@@ -1,5 +1,7 @@
 {
   "name": "SpaceXLaunches",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

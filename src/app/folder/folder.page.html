@@ -14,8 +14,14 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong class="capitalize">{{ folder }}</strong>
-    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <!-- <div id="container">
+    <strong class="capitalize">RIP</strong>
+    <p>RIP <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  </div> -->
+
+  
+  <div *ngFor = "let crew of data; let i = index">
+    <p>{{crew.name}}</p>
+    <img style="border-radius:30px;" src='{{crew.flickr_images[1]}}' alt="" width="400">
   </div>
 </ion-content>
