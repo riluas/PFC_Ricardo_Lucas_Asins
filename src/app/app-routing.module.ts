@@ -10,7 +10,23 @@ const routes: Routes = [
   {
     path: 'folder/:id',
     loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
+  },  {
+    path: 'vehiculos',
+    loadChildren: () => import('./vehiculos/vehiculos.module').then( m => m.VehiculosPageModule)
+  },
+  {
+    path: 'lanzamientos',
+    loadChildren: () => import('./lanzamientos/lanzamientos.module').then( m => m.LanzamientosPageModule)
+  },
+  {
+    path: 'seguidos',
+    loadChildren: () => import('./seguidos/seguidos.module').then( m => m.SeguidosPageModule)
+  },
+  {
+    path: 'perfil',
+    loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule)
   }
+
 ];
 
 @NgModule({

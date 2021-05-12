@@ -1,0 +1,31 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Perfil</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- <div id="container">
+    <strong class="capitalize">RIP</strong>
+    <p>RIP <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  </div> -->
+
+  <ion-card *ngFor = "let crew of data; let i = index">
+    <ion-card-header>
+      <ion-card-title>{{crew.name}}</ion-card-title>
+    </ion-card-header>
+    <img src='{{crew.links.patch.small}}' alt="">
+    <ion-card-content>
+      {{crew.details}}
+    </ion-card-content>
+  </ion-card>
+</ion-content>
