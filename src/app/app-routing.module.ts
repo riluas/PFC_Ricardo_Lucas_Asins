@@ -10,7 +10,8 @@ const routes: Routes = [
   {
     path: 'folder/:id',
     loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
-  },  {
+  },
+  {
     path: 'vehiculos',
     loadChildren: () => import('./vehiculos/vehiculos.module').then( m => m.VehiculosPageModule)
   },
@@ -25,7 +26,16 @@ const routes: Routes = [
   {
     path: 'perfil',
     loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule)
+  },
+  {
+    path: 'lanzamiento-detalle/:id',
+    loadChildren: () => import('./lanzamiento-detalle/lanzamiento-detalle.module').then( m => m.LanzamientoDetallePageModule)
+  },
+  {
+    path: 'vehiculo-detalle/:id',
+    loadChildren: () => import('./vehiculo-detalle/vehiculo-detalle.module').then( m => m.VehiculoDetallePageModule)
   }
+
 
 ];
 

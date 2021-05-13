@@ -2,15 +2,16 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
+      <ion-back-button side="right" color="black"></ion-back-button>
     </ion-buttons>
-    <ion-title>Vehículos</ion-title>
+    <ion-title>Vehículo Detalle</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Vehículos</ion-title>
+      <ion-title size="large">Vehículo Detalle</ion-title>
     </ion-toolbar>
   </ion-header>
 
@@ -18,14 +19,16 @@
     <strong class="capitalize">RIP</strong>
     <p>RIP <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
   </div> -->
-
-  <ion-card *ngFor = "let rocket of data; let i = index" (click)='setRocketId(rocket.id)' [routerLink]="['/vehiculo-detalle/',rocket.id]">
+  <ion-card *ngFor = "let rocket of data; let i = index">
+    <div *ngIf ='rocket.id == idRocket'>
     <ion-card-header>
+      
       <ion-card-title>{{rocket.name}}</ion-card-title>
     </ion-card-header>
     <img src='{{rocket.flickr_images[1]}}' alt="">
     <ion-card-content>
       <p>aaa</p>
     </ion-card-content>
+  </div>
   </ion-card>
 </ion-content>

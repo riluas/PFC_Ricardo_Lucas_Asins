@@ -1,21 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-
 import { HTTP } from '@ionic-native/http/ngx';
 import { SpaceServiceService } from '../space-service.service';
+
 @Component({
-  selector: 'app-vehiculos',
-  templateUrl: './vehiculos.page.html',
-  styleUrls: ['./vehiculos.page.scss'],
+  selector: 'app-vehiculo-detalle',
+  templateUrl: './vehiculo-detalle.page.html',
+  styleUrls: ['./vehiculo-detalle.page.scss'],
 })
-export class VehiculosPage implements OnInit {
+export class VehiculoDetallePage implements OnInit {
+
   data: any;
   provSer: SpaceServiceService;
-  
+  idRocket: any;
+
   constructor(private http: HTTP, public spaceService: SpaceServiceService) {
     this.provSer = spaceService
    }
 
   ngOnInit() {
+    this.idRocket = this.provSer.getRocketId();
     this.http.get('https://api.spacexdata.com/v4/rockets', {}, {})
 
     .then(res => {
@@ -30,7 +33,6 @@ export class VehiculosPage implements OnInit {
       console.log(error.headers);
     });
   }
-  setRocketId(id){
-    this.provSer.setRocketId(id);
-  }
+
+
 }
