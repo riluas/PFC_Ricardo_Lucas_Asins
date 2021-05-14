@@ -14,18 +14,18 @@
     </ion-toolbar>
   </ion-header>
 
-  <!-- <div id="container">
-    <strong class="capitalize">RIP</strong>
-    <p>RIP <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div> -->
+  <div id="container">
 
-  <ion-card *ngFor = "let crew of data; let i = index">
-    <ion-card-header>
-      <ion-card-title>{{crew.name}}</ion-card-title>
-    </ion-card-header>
-    <img src='{{crew.links.patch.small}}' alt="">
-    <ion-card-content>
-      {{crew.details}}
-    </ion-card-content>
-  </ion-card>
+
+  <ion-avatar class="avatar">
+    <img src="https://imgur.com/0smMgMH.png">
+  </ion-avatar>
+  <p><strong class="capitalize">Nombre</strong></p>
+  <hr class="line">
+  <p><strong class="capitalize">Apellidos</strong></p>
+  <hr class="line">
+  <p><strong class="capitalize">Email</strong></p>
+  <hr class="line">
+</div>
 </ion-content>
+
