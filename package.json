@@ -15,6 +15,7 @@
   "dependencies": {
     "@angular/common": "~11.2.0",
     "@angular/core": "~11.2.0",
+    "@angular/fire": "^6.1.4",
     "@angular/forms": "~11.2.0",
     "@angular/platform-browser": "~11.2.0",
     "@angular/platform-browser-dynamic": "~11.2.0",
@@ -46,6 +47,7 @@
     "cordova-plugin-advanced-http": "^3.1.0",
     "cordova-plugin-device": "2.0.2",
     "cordova-plugin-file": "^6.0.2",
+    "cordova-plugin-firebase": "^2.0.5",
     "cordova-plugin-ionic-keyboard": "^2.0.5",
     "cordova-plugin-ionic-webview": "^4.0.0",
     "cordova-plugin-splashscreen": "5.0.2",
