@@ -13,19 +13,19 @@ import {SpaceServiceService} from '../space-service.service'
 })
 export class LoginPage implements OnInit {
 
-  ruta: string = "../../assets/img/FLORIDA-UNIVERSITARIA.png";
+  imagenRuta: string = "../../assets/img/SpaceX_Launches_Logo_Negro.svg";
 
   createUsuario: IUsuario[];
   usuarios: IUsuario[] = [];
   id : number = 0;
   message = "Hola";
   provSer: SpaceServiceService;
-  usuario: any[] = Array();
-  loginUser: string = "";
+  email: any[] = Array();
+  loginEmail: string = "";
   loginPassword: string = "";
 
-  constructor(public alertController: AlertController,   private _productoService : SpaceServiceService,public router: Router, public serviceProviderService: SpaceServiceService) {
-    this.provSer = serviceProviderService
+  constructor(public alertController: AlertController,   private _productoService : SpaceServiceService,public router: Router, public spaceServiceService: SpaceServiceService) {
+    this.provSer = spaceServiceService
   }
 
 ngOnInit(){
@@ -34,7 +34,7 @@ ngOnInit(){
     snapshot.forEach(child =>{
       let value = child.val();
       this.usuarios.push(value);
-      this.usuario.push(value.nombre); 
+      this.email.push(value.nombre); 
       console.log("He encontrado "+child.val().id);
       this.id++
       console.log(this.id);
@@ -49,21 +49,45 @@ create(){
   this.router.navigate(['/registro'])
 }
 
-btnClicked(){
-  firebase.auth().signInWithEmailAndPassword(this.loginUser, this.loginPassword)
+login(){
+  firebase.auth().signInWithEmailAndPassword(this.loginEmail, this.loginPassword)
   .then((user) => {
     // Signed in
     // ...
     alert("Correcto")
-    this.provSer.setUser(this.loginUser);    
-    this.router.navigate(['/home'])
+    this.provSer.setUser(this.loginEmail);    
+    this.router.navigate(['/lanzamientos'])
   })
   .catch((error) => {
     var errorCode = error.code;
     var errorMessage = error.message;
-    if (this.loginUser == "") {
-      console.log(this.usuario);
-      alert("Introduce el nombre de usuario")
+    if (this.loginEmail == "") {
+      console.log(this.email);
+      alert("Introduce el email")
+    }
+    if (this.loginPassword == "") {
+      alert("Introduce la contraseña")
+    }
+    else{
+      alert("Email o contraseña erroneos")
+    }
+ 
+  });
+}
+
+guest(){
+  firebase.auth().signInWithEmailAndPassword("guest@spacexlaunches.com", "guest123456")
+  .then((user) => {
+    alert("Correcto")
+    this.provSer.setUser("guest@spacexlaunches.com");    
+    this.router.navigate(['/lanzamientos'])
+  })
+  .catch((error) => {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    if (this.loginEmail == "") {
+      console.log(this.email);
+      alert("Introduce el email")
     }
     if (this.loginPassword == "") {
       alert("Introduce la contraseña")

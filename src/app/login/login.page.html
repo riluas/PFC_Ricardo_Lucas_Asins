@@ -1,29 +1,30 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Login
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
+  <ion-title id="title" class="ion-text-center">Spacex Launches</ion-title>
   <div id="container">
-
-    <img [src]="ruta" [style.width.px]="width"/>
-
+    <img id="logo" [src]="imagenRuta"/>
     <form>
-    <ion-item>
-      <ion-label position="floating">Usuario</ion-label>
-      <ion-input type="text" [(ngModel)]="loginUser" name="usuario"></ion-input>
+    <ion-item class="userInput">
+      <ion-label position="floating">Email</ion-label>
+      <ion-input class="emailPassword" type="text" [(ngModel)]="loginEmail" name="email"></ion-input>
     </ion-item>
 
-    <ion-item>
+    <ion-item class="userInput">
       <ion-label position="floating">Contraseña</ion-label>
-      <ion-input type="password" [(ngModel)]="loginPassword"  name="password"></ion-input>
+      <ion-input class="emailPassword" type="password" [(ngModel)]="loginPassword"  name="password"></ion-input>
     </ion-item>
-    <ion-button expand="block" (click)="btnClicked()">Iniciar Sesión</ion-button>
-    <ion-button expand="block" (click)="create()">Registrar</ion-button>
+
+    <ion-grid>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="12" class="ion-text-center">
+          <ion-button id="loginButton" color="dark" fill="outline" shape="round" (click)="login()">Iniciar Sesión</ion-button>
+          <p class="registerGuestText">¿Aún no tienes cuenta?</p>
+          <ion-button class="registerGuest registerGuestText" fill="clear" (click)="create()">Registrate</ion-button>
+          <p class="registerGuestText">O entra como</p>
+          <ion-button class="registerGuest registerGuestText" fill="clear" (click)="guest()">Invitado/a</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
   </form>   
-  
   </div>
 </ion-content>
