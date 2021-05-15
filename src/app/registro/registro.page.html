@@ -1,0 +1,37 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Registro
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div id="container">
+
+    <img [src]="ruta" [style.width.px]="width"/>
+
+    <form>
+      <ion-item>
+        <ion-label position="floating">Nombre</ion-label>
+        <ion-input type="text" [(ngModel)]="NombreUser"  name="NombreUser"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Apellidos</ion-label>
+        <ion-input type="text" [(ngModel)]="ApellidosUser"  name="ApellidosUser"></ion-input>
+      </ion-item>
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="text" [(ngModel)]="loginEmail" name="usuario"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input type="text" [(ngModel)]="loginPassword"  name="password"></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" (click)="create()">Registrar</ion-button>
+  </form>   
+  
+  </div>
+</ion-content>

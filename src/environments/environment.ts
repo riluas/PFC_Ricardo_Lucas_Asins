@@ -7,6 +7,7 @@ export const environment = {
   firebaseConfig : {
     apiKey: "AIzaSyBmRM2ptNR1C8Mqjx_DHrT1rU8-mun2DH8",
     authDomain: "spacexlaunches-6b118.firebaseapp.com",
+    databaseURL: "https://spacexlaunches-6b118-default-rtdb.europe-west1.firebasedatabase.app",
     projectId: "spacexlaunches-6b118",
     storageBucket: "spacexlaunches-6b118.appspot.com",
     messagingSenderId: "528068597345",

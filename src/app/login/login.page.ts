@@ -76,7 +76,7 @@ login(){
 }
 
 guest(){
-  firebase.auth().signInWithEmailAndPassword("guest@spacexlaunches.com", "guest123456")
+  firebase.auth().signInWithEmailAndPassword("guest@spacexlaunches.com", "123456")
   .then((user) => {
     alert("Correcto")
     this.provSer.setUser("guest@spacexlaunches.com");    
