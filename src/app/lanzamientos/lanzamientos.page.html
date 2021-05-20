@@ -24,22 +24,21 @@
       <ion-card-title>{{launch.name}}</ion-card-title>
     </ion-card-header>
     <div *ngIf ='launch.links.patch.small'>
-      <img src='{{launch.links.patch.small}}' alt="" width="300px">
+      <ion-avatar class="image">
+        <img  src='{{launch.links.patch.small}}' alt="">
+      </ion-avatar>
     </div>
     <div *ngIf ='!launch.links.patch.small'>
       <div *ngFor = "let rocket1 of infoRocket; let u = index">
       <div *ngIf ='launch.rocket == rocket1.id'>
-        <img style = 'display: inline-block;
-        position: relative;
-        width: 300px;
-        height: 300px;
-        overflow: hidden;
-        border-radius: 50%' src="{{rocket1.flickr_images[1]}}" alt="">
+        <ion-avatar class="image">
+          <img  src="{{rocket1.flickr_images[1]}}" alt="">
+        </ion-avatar>
       </div>
     </div>
-
     </div>
     <ion-card-content>
+      {{demo}}
       {{launch.details}}
     </ion-card-content>
   </ion-card>

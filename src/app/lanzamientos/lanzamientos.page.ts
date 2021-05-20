@@ -42,9 +42,22 @@ export class LanzamientosPage implements OnInit {
     });
     
   }
+  conutDownDate = new Date("2021-05-26T18:59:00.000Z").getTime();
   setLaunchId(id){
     this.provSer.setLaunchId(id);
   }
+
+  demo:any
+  x = setInterval(()=>{
+      var now = new Date().getTime();
+      var distance = this.conutDownDate - now;
+      var days = Math.floor(distance/(1000*60*60*24));
+      var hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+        hours = hours+2;
+      var minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+      var seconds = Math.floor((distance % (1000*60)) / 1000);
+      this.demo = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+  })
 }
 
 

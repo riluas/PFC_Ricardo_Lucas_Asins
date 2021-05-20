@@ -19,14 +19,16 @@
     <strong class="capitalize">RIP</strong>
     <p>RIP <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
   </div> -->
-
-  <ion-card *ngFor = "let launch of infoLaunches; let i = index">
-    <div *ngIf ='launch.id == idLaunch'>
+<div *ngFor = "let launch of infoLaunches; let i = index">
+  <ion-card  *ngIf ='launch.id == idLaunch'>
     <ion-card-header>
       <ion-card-title>{{launch.id}}</ion-card-title>
     </ion-card-header>
     <div *ngIf ='launch.links.patch.small'>
-      <img src='{{launch.links.patch.small}}' alt="" width="300px">
+      <ion-avatar class="image">
+        <img  src='{{launch.links.patch.small}}' alt="">
+      </ion-avatar>
+      
     </div>
     <div *ngIf ='!launch.links.patch.small'>
       <div *ngFor = "let rocket1 of infoRocket; let u = index">
@@ -40,12 +42,10 @@
       </div>
     </div>
     </div>
-  
     <ion-card-content>
       {{idLaunch}}
       {{launch.details}}
     </ion-card-content>
-  </div>
   </ion-card>
-
+</div>
 </ion-content>
