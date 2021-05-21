@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HTTP } from '@ionic-native/http/ngx';
 import { SpaceServiceService } from '../space-service.service';
+import { AngularFireDatabase } from "@angular/fire/database";
 @Component({
   selector: 'app-lanzamiento-detalle',
   templateUrl: './lanzamiento-detalle.page.html',
@@ -11,7 +12,9 @@ export class LanzamientoDetallePage implements OnInit {
   infoRocket: any;
   idLaunch: any;
   provSer: SpaceServiceService;
-  constructor(private http: HTTP, public spaceService: SpaceServiceService) {
+  UsuarioIniciado: any;
+
+  constructor(private http: HTTP, public spaceService: SpaceServiceService,private _db: AngularFireDatabase) {
     this.provSer = spaceService
    }
 
@@ -39,6 +42,12 @@ export class LanzamientoDetallePage implements OnInit {
       console.log(error.error); // Mensaje de error en una cadena.
     });
 
+  }
+
+  setLaunchId(id){
+    this.UsuarioIniciado = this.provSer.getUser();
+    let ref = this._db.database.ref("Favoritos");
+    ref.push({idLanzamiento:id, usuario:this.UsuarioIniciado});
   }
 
 }

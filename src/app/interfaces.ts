@@ -11,6 +11,7 @@ export interface IUsuarioCreate{
     "email": string,
 }
 
+
 export interface ILogUsuario{
     "email": string,
 }

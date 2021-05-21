@@ -16,12 +16,13 @@
 
   <!-- <div id="container">
     <strong class="capitalize">RIP</strong>
-    <p>RIP <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <p>RIP <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components%22%3EUI Components</a></p>
   </div> -->
 
   <ion-card *ngFor = "let launch of infoLaunches; let i = index" (click)='setLaunchId(launch.id)' [routerLink]="['/lanzamiento-detalle/',launch.id]">
     <ion-card-header>
       <ion-card-title>{{launch.name}}</ion-card-title>
+      <p>{{launch.id}}</p>
     </ion-card-header>
     <div *ngIf ='launch.links.patch.small'>
       <ion-avatar class="image">
@@ -38,7 +39,11 @@
     </div>
     </div>
     <ion-card-content>
-      {{demo}}
+      <div *ngFor="let date of newArrayDate; let i = index">
+
+      <span *ngIf="date.id == launch.id">{{date.date}} <p>{{date.id}}</p></span>
+      
+    </div>
       {{launch.details}}
     </ion-card-content>
   </ion-card>

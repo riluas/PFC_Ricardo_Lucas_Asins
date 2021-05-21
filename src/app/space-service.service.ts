@@ -29,6 +29,11 @@ export class SpaceServiceService {
    ref.push(usuarios);
  }
 
+ getFavoritos(): firebase.default.database.Reference {
+  let ref = this._db.database.ref("Favoritos");
+  return ref;
+}
+
   setLaunchId(id){
     this.idLaunch = id;
   }
