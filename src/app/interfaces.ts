@@ -15,3 +15,8 @@ export interface IUsuarioCreate{
 export interface ILogUsuario{
     "email": string,
 }
+
+export interface IFavorito{
+    "idLanzamiento": number,
+    "usuario": string,
+}
