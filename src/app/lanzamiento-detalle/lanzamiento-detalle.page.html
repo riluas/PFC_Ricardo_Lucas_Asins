@@ -42,8 +42,11 @@
       </div>
     </div>
     </div>
+    <ion-button id="favButton" color="danger" fill="clear" shape="round" (click)="setLaunchId(launch.id)">
+      <ion-icon style="font-size: 38px;float: right;" name="heart"></ion-icon>
+    </ion-button>
     <ion-card-content>
-      <ion-icon (click)='setLaunchId(launch.id)'style="font-size: 38px;float: right;" name="heart"></ion-icon>
+     
       {{idLaunch}}
       {{launch.details}}
     </ion-card-content>

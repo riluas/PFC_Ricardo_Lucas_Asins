@@ -72,6 +72,7 @@ export class LanzamientoDetallePage implements OnInit {
     });
 
   }
+  
 
   setLaunchId(idLanzamiento){
     this.favoritos = [];
