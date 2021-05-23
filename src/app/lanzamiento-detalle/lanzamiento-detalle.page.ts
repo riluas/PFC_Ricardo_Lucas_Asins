@@ -18,6 +18,7 @@ export class LanzamientoDetallePage implements OnInit {
   arrayFavoritos:any[] = Array();
   arrayUsuariosFavoritos:any[] = Array();
   idUsuarioIniciado: number;
+  existe = false;
   constructor(private http: HTTP, public spaceService: SpaceServiceService,private _db: AngularFireDatabase) {
     this.provSer = spaceService
    }
@@ -62,93 +63,48 @@ export class LanzamientoDetallePage implements OnInit {
   }
 
   setLaunchId(idLanzamiento){
+    this.favoritos = [];
     let ref = this.provSer.getFavoritos();
     ref.once("value", snapshot =>{
       snapshot.forEach(child =>{
         let value = child.val();
         this.favoritos.push(value);
-        console.log(this.favoritos);
+        console.log("Favoritos "+this.favoritos);
         console.log("He encontrado "+child.val().idLanzamiento);
       })
-         
     });
-    
-    const map1 = new Map();
-    let mapid
-    let existe = false
-    // if (condition) {
-    //   // getFavoritos()
-    // }
+//No entra al for
+console.log(this.favoritos.length);
     for (let i = 0; i < this.favoritos.length; i++) {
-      let usuario = this.favoritos[i].usuario;
-      let launchId = this.favoritos[i].idLanzamiento;
-      console.log(i);
-      if (this.favoritos[i].usuario == this.UsuarioIniciado && this.favoritos[i].idLanzamiento == idLanzamiento && !existe) {
-          existe = true
-          break;
+      console.log(this.favoritos[i]);
+      if (this.favoritos[i].usuario == this.UsuarioIniciado && this.favoritos[i].idLanzamiento == idLanzamiento && !this.existe) {
+          this.existe = true
+         break;
       }
       else{
-        existe = false
+        this.existe = false
       }
-      // else{
-      //   let ref = this._db.database.ref("Favoritos");
-      //   ref.push({idLanzamiento:idLanzamiento, usuario:this.UsuarioIniciado});
-      // }
-      // map1.set(usuario,launchId);
-      // if (this.favoritos[i].usuario == this.UsuarioIniciado) {
-      //   if (idLanzamiento == this.favoritos[i].idLanzamiento) {
-          
-      //   }
-      //   else{
-      //     console.log("entra");
-          
-      //     let ref = this._db.database.ref("Favoritos");
-      //     ref.push({idLanzamiento:idLanzamiento, usuario:this.UsuarioIniciado});
-      //   }
-      //   console.log("usuario: "+this.favoritos[i].usuario+" "+"idLanzamiento: "+this.favoritos[i].idLanzamiento);
-
-      // }
-      // else{
-      //   let ref = this._db.database.ref("Favoritos");
-      //   ref.push({idLanzamiento:idLanzamiento, usuario:this.UsuarioIniciado});
-      // }
-
     }
-
-    if(!existe){
+    if(!this.existe){
         let ref = this._db.database.ref("Favoritos");
         ref.push({idLanzamiento:idLanzamiento, usuario:this.UsuarioIniciado});
+        this.existe = true
     }
     else{
         // Elimina el favorito que es igual al usuario
-
-  let ref = this.provSer.getFavoritos();
-  ref.orderByChild("usuario").equalTo(this.UsuarioIniciado).once("value", snapshot => {
-  snapshot.forEach(child => {
-  let clave = child.key;
-  ref.child(clave).remove();
-  })
-  });
-  existe = true
-    }
-    
-    
-    console.log(map1);
-    if (map1.has(this.UsuarioIniciado)) {
-      console.log("lo tiene");
+        let ref2 = this.provSer.getFavoritos();
+        ref2.orderByChild("usuario").equalTo(this.UsuarioIniciado).once("value", snapshot => {
+        snapshot.forEach(child => {
+          console.log(child.key+": "+child.val());
+          console.log(child.val().idLanzamiento);
+          if (child.val().idLanzamiento == idLanzamiento && child.val().usuario == this.UsuarioIniciado) {
+              let clave = child.key;
+              ref2.child(clave).remove();
+          }
+        })
+        });
+        console.log(this.UsuarioIniciado);
+        this.existe = false
     }
   }
-
-  // Elimina el favorito que es igual al usuario
-
-  // let ref = this.provSer.getFavoritos();
-  // ref.orderByChild("usuario").equalTo(this.favoritos[i].usuario).once("value", snapshot => {
-  // snapshot.forEach(child => {
-  // let clave = child.key;
-  // ref.child(clave).remove();
-  // })
-  // });
-
-
 }
-
