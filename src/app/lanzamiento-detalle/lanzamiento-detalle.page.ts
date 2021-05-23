@@ -60,6 +60,17 @@ export class LanzamientoDetallePage implements OnInit {
          
     });
 
+    let ref2 = this.provSer.getFavoritos();
+    ref2.orderByChild("usuario").equalTo(this.UsuarioIniciado).once("value", snapshot => {
+    snapshot.forEach(child => {
+      console.log(child.key+": "+child.val());
+      console.log(child.val().idLanzamiento);
+      if (child.val().idLanzamiento == this.idLaunch && child.val().usuario == this.UsuarioIniciado) {
+          this.existe = true
+      }
+    })
+    });
+
   }
 
   setLaunchId(idLanzamiento){
