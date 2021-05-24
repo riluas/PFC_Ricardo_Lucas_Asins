@@ -11,6 +11,7 @@ export class LanzamientosPage implements OnInit {
 
   infoLaunches: any;
   infoRocket: any;
+  infoLaunchpad: any;
   provSer: SpaceServiceService;
   arrayDate:any[] = Array();
   newArrayDate:any[] = Array();
@@ -47,6 +48,17 @@ export class LanzamientosPage implements OnInit {
     .catch(error => {
       console.log(error.error); // Mensaje de error en una cadena.
     });
+    this.http.get('https://api.spacexdata.com/v4/launchpads', {}, {})
+
+    .then(res => {
+      console.log(res + "HOLA");
+      this.infoLaunchpad= JSON.parse(res.data);
+      console.log(res.data); // Información recibida desde el server.
+    })
+    .catch(error => {
+      console.log(error.error); // Mensaje de error en una cadena.
+    });
+    
     
   }
   conutDownDate = new Date("2021-05-26T18:59:00.000Z").getTime();
