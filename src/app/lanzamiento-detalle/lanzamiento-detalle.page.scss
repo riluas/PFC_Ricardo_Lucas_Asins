@@ -13,4 +13,7 @@
     --box-shadow:none;
     --background-hover: var(--background);
     --ripple-color: transparent;
+    position: relative;
+    z-index: 99;
+    float: right;
  }

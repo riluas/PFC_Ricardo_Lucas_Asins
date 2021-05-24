@@ -14,33 +14,32 @@
     </ion-toolbar>
   </ion-header>
 
-  <div *ngFor = "let launch of infoLaunches; let i = index">
-    <div *ngFor = "let favorito of arrayFavoritos; let u = index">
-  <ion-card *ngIf ='launch.id == favorito' (click)='setLaunchId(launch.id)' [routerLink]="['/lanzamiento-detalle/',launch.id]">
-    
-    <ion-card-header>
-      <ion-card-title>{{launch.name}}</ion-card-title>
-      <p>{{launch.id}}</p>
-    </ion-card-header>
-    <div *ngIf ='launch.links.patch.small'>
-      <ion-avatar class="image">
-        <img  src='{{launch.links.patch.small}}' alt="">
-      </ion-avatar>
+  <div *ngFor="let launch of infoLaunches; let i = index">
+    <div *ngFor="let favorito of arrayFavoritos; let u = index">
+      <ion-card *ngIf='launch.id == favorito' (click)='setLaunchId(launch.id)'
+        [routerLink]="['/lanzamiento-detalle/',launch.id]">
+        <ion-card-header>
+          <ion-card-title>{{launch.name}}</ion-card-title>
+          <p>{{launch.id}}</p>
+        </ion-card-header>
+        <div *ngIf='launch.links.patch.small'>
+          <ion-avatar class="image">
+            <img src='{{launch.links.patch.small}}' alt="">
+          </ion-avatar>
+        </div>
+        <div *ngIf='!launch.links.patch.small'>
+          <div *ngFor="let rocket1 of infoRocket; let u = index">
+            <div *ngIf='launch.rocket == rocket1.id'>
+              <ion-avatar class="image">
+                <img src="{{rocket1.flickr_images[1]}}" alt="">
+              </ion-avatar>
+            </div>
+          </div>
+        </div>
+        <ion-card-content>
+          {{launch.details}}
+        </ion-card-content>
+      </ion-card>
     </div>
-    <div *ngIf ='!launch.links.patch.small'>
-      <div *ngFor = "let rocket1 of infoRocket; let u = index">
-      <div *ngIf ='launch.rocket == rocket1.id'>
-        <ion-avatar class="image">
-          <img  src="{{rocket1.flickr_images[1]}}" alt="">
-        </ion-avatar>
-      </div>
-    </div>
-    </div>
-    <ion-card-content>
-      {{launch.details}}
-    </ion-card-content>
-  
-  </ion-card>
-</div>
-</div>
+  </div>
 </ion-content>
