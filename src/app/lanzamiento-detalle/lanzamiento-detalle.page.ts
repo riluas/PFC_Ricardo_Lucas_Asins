@@ -9,6 +9,7 @@ import { IFavorito } from '../interfaces';
   styleUrls: ['./lanzamiento-detalle.page.scss'],
 })
 export class LanzamientoDetallePage implements OnInit {
+  meGustaIcon = false;
   infoLaunches: any;
   infoRocket: any;
   idLaunch: any;
@@ -66,7 +67,8 @@ export class LanzamientoDetallePage implements OnInit {
       console.log(child.key+": "+child.val());
       console.log(child.val().idLanzamiento);
       if (child.val().idLanzamiento == this.idLaunch && child.val().usuario == this.UsuarioIniciado) {
-          this.existe = true
+          this.existe = true;
+          this.meGustaIcon = true;
       }
     })
     });
@@ -90,17 +92,20 @@ console.log(this.favoritos.length);
     for (let i = 0; i < this.favoritos.length; i++) {
       console.log(this.favoritos[i]);
       if (this.favoritos[i].usuario == this.UsuarioIniciado && this.favoritos[i].idLanzamiento == idLanzamiento && !this.existe) {
-          this.existe = true
+          this.existe = true;
+          this.meGustaIcon = true;
          break;
       }
       else{
-        this.existe = false
+        this.existe = false;
+        this.meGustaIcon = false;
       }
     }
     if(!this.existe){
         let ref = this._db.database.ref("Favoritos");
         ref.push({idLanzamiento:idLanzamiento, usuario:this.UsuarioIniciado});
-        this.existe = true
+        this.existe = true;
+        this.meGustaIcon = true;
     }
     else{
         // Elimina el favorito que es igual al usuario
@@ -116,7 +121,8 @@ console.log(this.favoritos.length);
         })
         });
         console.log(this.UsuarioIniciado);
-        this.existe = false
+        this.existe = false;
+        this.meGustaIcon = false;
     }
   }
 }

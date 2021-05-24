@@ -61,6 +61,9 @@ export class SeguidosPage implements OnInit {
       });
       
   }
+  setLaunchId(id){
+    this.provSer.setLaunchId(id);
+  }
 
 
 }

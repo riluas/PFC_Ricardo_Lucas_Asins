@@ -33,17 +33,16 @@
     <div *ngIf ='!launch.links.patch.small'>
       <div *ngFor = "let rocket1 of infoRocket; let u = index">
       <div *ngIf ='launch.rocket == rocket1.id'>
-        <img style = 'display: inline-block;
-        position: relative;
-        width: 300px;
-        height: 300px;
-        overflow: hidden;
-        border-radius: 50%' src="{{rocket1.flickr_images[1]}}" alt="">
+        <ion-avatar class="image">
+          <img  src="{{rocket1.flickr_images[1]}}" alt="">
+        </ion-avatar>
       </div>
     </div>
     </div>
+    
     <ion-button id="favButton" color="danger" fill="clear" shape="round" (click)="setLaunchId(launch.id)">
-      <ion-icon style="font-size: 38px;float: right;" name="heart"></ion-icon>
+      <ion-icon  class="main-button" [name]="meGustaIcon ? 'heart' : 'heart-outline'"></ion-icon>
+      <!-- <ion-icon style="font-size: 38px;float: right;" name="heart"></ion-icon> -->
     </ion-button>
     <ion-card-content>
      

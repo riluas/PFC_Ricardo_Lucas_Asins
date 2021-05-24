@@ -14,14 +14,10 @@
     </ion-toolbar>
   </ion-header>
 
-  <!-- <div id="container">
-    <strong class="capitalize">RIP</strong>
-    <p>RIP <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components%22%3EUI Components</a></p>
-  </div> -->
-
-  <ion-card *ngFor = "let launch of infoLaunches; let i = index">
+  <div *ngFor = "let launch of infoLaunches; let i = index">
     <div *ngFor = "let favorito of arrayFavoritos; let u = index">
-    <div *ngIf ='launch.id == favorito'>
+  <ion-card *ngIf ='launch.id == favorito' (click)='setLaunchId(launch.id)' [routerLink]="['/lanzamiento-detalle/',launch.id]">
+    
     <ion-card-header>
       <ion-card-title>{{launch.name}}</ion-card-title>
       <p>{{launch.id}}</p>
@@ -43,7 +39,8 @@
     <ion-card-content>
       {{launch.details}}
     </ion-card-content>
-  </div>
-  </div>
+  
   </ion-card>
+</div>
+</div>
 </ion-content>
