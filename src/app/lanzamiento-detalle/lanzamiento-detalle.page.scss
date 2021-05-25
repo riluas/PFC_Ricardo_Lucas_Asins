@@ -1,3 +1,16 @@
+#container{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+h1{
+    text-align: center;
+}
+p{
+    font-size: 14px;
+}
+.infoLanzamiento{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
 .image{
     margin:0 auto;
     margin-top: 10%;
@@ -6,8 +19,7 @@
 }
 .main-button{
     --background-hover: var(--background);
-    font-size: 38px;
-    
+    font-size: 38px;    
  }
  #favButton{
     --box-shadow:none;

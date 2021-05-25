@@ -15,16 +15,10 @@
     </ion-toolbar>
   </ion-header>
 
-  <!-- <div id="container">
-    <strong class="capitalize">RIP</strong>
-    <p>RIP <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div> -->
-  <div *ngFor="let launch of infoLaunches; let i = index">
-    <ion-card *ngIf='launch.id == idLaunch'>
+  <div id="container" *ngFor="let launch of infoLaunches; let i = index">
+    <div *ngIf='launch.id == idLaunch'>
       {{getInfo(idLaunch)}}
-      <ion-card-header>
-        <ion-card-title>{{launch.name}}</ion-card-title>
-      </ion-card-header>
+      <h1>{{launch.name}}</h1>
       <div *ngIf='launch.links.patch.small'>
         <ion-avatar class="image">
           <img src='{{launch.links.patch.small}}' alt="">
@@ -38,20 +32,19 @@
       <ion-button id="favButton" color="danger" fill="clear" shape="round" (click)="setLaunchId(launch.id)">
         <ion-icon class="main-button" [name]="meGustaIcon ? 'heart' : 'heart-outline'"></ion-icon>
       </ion-button>
-      <ion-card-content>
-        <br>
-        <p>Nombre: {{launch.name}}</p>
-        <p>Cohete: {{rocketName}}</p>
-        <div *ngFor="let launchpads of infoLaunchpad; let e = index">
-          <div *ngIf='launchpads.id == launch.launchpad'>
-            <p>Lanzamiento: {{launchpads.locality}}, {{launchpads.region}}</p>
-          </div>
+      <br>
+      <br>
+      <p>Nombre: <span class="infoLanzamiento">{{launch.name}}</span></p>
+      <p>Cohete: <span class="infoLanzamiento">{{rocketName}}</span></p>
+      <div *ngFor="let launchpads of infoLaunchpad; let e = index">
+        <div *ngIf='launchpads.id == launch.launchpad'>
+          <p>Lanzamiento: <span class="infoLanzamiento">{{launchpads.locality}}, {{launchpads.region}}</span></p>
         </div>
-        <p>Fecha: {{launch.date_utc | date: 'dd/MM/yyyy'}}</p>
-        <p>Hora: {{launch.date_utc | date: 'HH:mm'}}</p>
-        <P *ngIf='launch.details'>Descripción: {{launch.details}}</P>
-        <P *ngIf='!launch.details'>Descripción: -</P>
-      </ion-card-content>
-    </ion-card>
+      </div>
+      <p>Fecha: <span class="infoLanzamiento">{{launch.date_utc | date: 'dd/MM/yyyy'}}</span></p>
+      <p>Hora: <span class="infoLanzamiento">{{launch.date_utc | date: 'HH:mm'}}</span></p>
+      <P *ngIf='launch.details'>Descripción: <span class="infoLanzamiento">{{launch.details}}</span></P>
+      <P *ngIf='!launch.details'>Descripción: <span class="infoLanzamiento">-</span></P>
+    </div>
   </div>
 </ion-content>
