@@ -21,6 +21,7 @@
   </div> -->
   <div *ngFor="let launch of infoLaunches; let i = index">
     <ion-card *ngIf='launch.id == idLaunch'>
+      {{getInfo(idLaunch)}}
       <ion-card-header>
         <ion-card-title>{{launch.name}}</ion-card-title>
       </ion-card-header>
@@ -30,21 +31,26 @@
         </ion-avatar>
       </div>
       <div *ngIf='!launch.links.patch.small'>
-        <div *ngFor="let rocket1 of infoRocket; let u = index">
-          <div *ngIf='launch.rocket == rocket1.id'>
-            <ion-avatar class="image">
-              <img src="{{rocket1.flickr_images[1]}}" alt="">
-            </ion-avatar>
-          </div>
-        </div>
+        <ion-avatar class="image">
+          <img src="{{rocketImage}}" alt="">
+        </ion-avatar>
       </div>
       <ion-button id="favButton" color="danger" fill="clear" shape="round" (click)="setLaunchId(launch.id)">
         <ion-icon class="main-button" [name]="meGustaIcon ? 'heart' : 'heart-outline'"></ion-icon>
       </ion-button>
       <ion-card-content>
-
-        {{idLaunch}}
-        {{launch.details}}
+        <br>
+        <p>Nombre: {{launch.name}}</p>
+        <p>Cohete: {{rocketName}}</p>
+        <div *ngFor="let launchpads of infoLaunchpad; let e = index">
+          <div *ngIf='launchpads.id == launch.launchpad'>
+            <p>Lanzamiento: {{launchpads.locality}}, {{launchpads.region}}</p>
+          </div>
+        </div>
+        <p>Fecha: {{launch.date_utc | date: 'dd/MM/yyyy'}}</p>
+        <p>Hora: {{launch.date_utc | date: 'HH:mm'}}</p>
+        <P *ngIf='launch.details'>Descripción: {{launch.details}}</P>
+        <P *ngIf='!launch.details'>Descripción: -</P>
       </ion-card-content>
     </ion-card>
   </div>
