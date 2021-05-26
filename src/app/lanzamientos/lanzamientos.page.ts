@@ -62,7 +62,7 @@ export class LanzamientosPage implements OnInit {
 
 
   }
-  conutDownDate = new Date("2021-05-26T18:59:00.000Z").getTime();
+  countDownDate = new Date("2021-05-26T18:59:00.000Z").getTime();
   setLaunchId(id) {
     this.provSer.setLaunchId(id);
   }
@@ -72,8 +72,8 @@ export class LanzamientosPage implements OnInit {
     this.newArrayDate = []
     for (const key in this.arrayDate) {
       var now = new Date().getTime();
-      this.conutDownDate = new Date(this.arrayDate[key].date).getTime();
-      var distance = this.conutDownDate - now;
+      this.countDownDate = new Date(this.arrayDate[key].date).getTime();
+      var distance = this.countDownDate - now;
 
       var days = Math.floor(distance / (1000 * 60 * 60 * 24));
       var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));

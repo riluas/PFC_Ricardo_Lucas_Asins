@@ -18,9 +18,20 @@
     <div *ngFor="let favorito of arrayFavoritos; let u = index">
       <ion-card *ngIf='launch.id == favorito' (click)='setLaunchId(launch.id)'
         [routerLink]="['/lanzamiento-detalle/',launch.id]">
-        <ion-card-header>
+        <ion-card-header id="cardHeader">
           <ion-card-title>{{launch.name}}</ion-card-title>
-          <p>{{launch.id}}</p>
+          <div *ngFor="let rocket1 of infoRocket; let u = index">
+            <div *ngIf='launch.rocket == rocket1.id'>
+              <p>{{rocket1.name}}</p>
+            </div>
+          </div>
+          <div *ngFor="let launchpads of infoLaunchpad; let e = index">
+            <div *ngIf='launchpads.id == launch.launchpad'>
+              <p>{{launchpads.locality}}, {{launchpads.region}}</p>
+            </div>
+          </div>
+          <ion-datetime disabled id="fecha" value={{launch.date_utc}} displayFormat="D/M/YYYY  HH:mm "
+            display-timezone="CET"></ion-datetime>
         </ion-card-header>
         <div *ngIf='launch.links.patch.small'>
           <ion-avatar class="image">
@@ -37,7 +48,13 @@
           </div>
         </div>
         <ion-card-content>
-          {{launch.details}}
+          <div style="text-align: center" *ngFor="let date of newArrayDate; let i = index">
+            <span *ngIf="date.id == launch.id">
+              <ion-text color="dark">
+                <h1>{{date.date}}</h1>
+              </ion-text>
+            </span>
+          </div>
         </ion-card-content>
       </ion-card>
     </div>

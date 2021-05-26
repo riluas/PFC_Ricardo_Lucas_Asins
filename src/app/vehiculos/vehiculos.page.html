@@ -14,18 +14,13 @@
     </ion-toolbar>
   </ion-header>
 
-  <!-- <div id="container">
-    <strong class="capitalize">RIP</strong>
-    <p>RIP <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div> -->
-
-  <ion-card *ngFor = "let rocket of data; let i = index" (click)='setRocketId(rocket.id)' [routerLink]="['/vehiculo-detalle/',rocket.id]">
-    <ion-card-header>
+  <ion-card *ngFor="let rocket of data; let i = index" (click)='setRocketId(rocket.id)'
+    [routerLink]="['/vehiculo-detalle/',rocket.id]">
+    <ion-card-header id="cardHeader">
+      <img src='{{rocket.flickr_images[1]}}' alt="">
       <ion-card-title>{{rocket.name}}</ion-card-title>
     </ion-card-header>
-    <img src='{{rocket.flickr_images[1]}}' alt="">
     <ion-card-content>
-      <p>aaa</p>
     </ion-card-content>
   </ion-card>
 </ion-content>

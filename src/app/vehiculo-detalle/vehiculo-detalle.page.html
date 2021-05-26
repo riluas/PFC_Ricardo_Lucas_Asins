@@ -15,19 +15,22 @@
     </ion-toolbar>
   </ion-header>
 
-  <!-- <div id="container">
-    <strong class="capitalize">RIP</strong>
-    <p>RIP <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div> -->
-  <div *ngFor = "let rocket of data; let i = index">
-  <ion-card *ngIf ='rocket.id == idRocket'>
-    <ion-card-header>
-      <ion-card-title>{{rocket.name}}</ion-card-title>
-    </ion-card-header>
-    <img src='{{rocket.flickr_images[1]}}' alt="">
-    <ion-card-content>
-      <p>aaa</p>
-    </ion-card-content>
-  </ion-card>
-</div>
+  <div *ngFor="let rocket of data; let i = index">
+    <div *ngIf='rocket.id == idRocket'>
+      <ion-slides pager="true" [options]="slideOpts">
+        <ion-slide *ngFor="let rocketImg of rocket.flickr_images; let e = index">
+          <img src='{{rocketImg}}' alt="">
+        </ion-slide>
+      </ion-slides>
+      <h1 class="textCenter">{{rocket.name}}</h1>
+      <p>Tipo: {{rocket.type}}</p>
+      <p>Altura: {{rocket.height.meters}}m</p>
+      <p>Diámetro: {{rocket.diameter.meters}}m</p>
+      <p>Peso: {{rocket.mass.kg}}kg</p>
+      <p>Costo por lanzamiento: {{rocket.cost_per_launch}}</p>
+      <p>Acierto: {{rocket.success_rate_pct}}%</p>
+      <p>Primer vuelo: {{rocket.first_flight | date: 'dd/MM/yyyy'}}</p>
+      <p>Descripción: {{rocket.description}}</p>
+    </div>
+  </div>
 </ion-content>
