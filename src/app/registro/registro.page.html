@@ -1,48 +1,35 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      <ion-buttons >
-        <button ion-button left class="loginnavbtn" (click)="goback()">
-          Cancel
-        </button>
-        <!-- left aligned content here -->
-        </ion-buttons>
-      Registro
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
+<ion-content class="bg-class" [fullscreen]="true">
   <div id="container">
-    <ion-buttons >
+    <ion-buttons>
       <button ion-button left class="loginnavbtn" (click)="goback()">
-        Cancel
+        <ion-icon id="arrow" name="arrow-back"></ion-icon>
       </button>
-      <!-- left aligned content here -->
-      </ion-buttons>
-    <img [src]="ruta" [style.width.px]="width"/>
-
+    </ion-buttons>
+    <h1>Registrate</h1>
     <form>
-      <ion-item>
-        <ion-label position="floating">Nombre</ion-label>
-        <ion-input type="text" [(ngModel)]="NombreUser"  name="NombreUser"></ion-input>
+      <h4 class="textCenter textWhite">Nombre</h4>
+      <ion-item class="textCenter userInput textWhite">
+        <ion-label position="stacked"></ion-label>
+        <ion-input type="text" [(ngModel)]="NombreUser" name="NombreUser"></ion-input>
       </ion-item>
-      <ion-item>
-        <ion-label position="floating">Apellidos</ion-label>
-        <ion-input type="text" [(ngModel)]="ApellidosUser"  name="ApellidosUser"></ion-input>
+      <h4 class="textCenter textWhite">Apellidos</h4>
+      <ion-item class="textCenter userInput textWhite">
+        <ion-label position="floating"></ion-label>
+        <ion-input type="text" [(ngModel)]="ApellidosUser" name="ApellidosUser"></ion-input>
       </ion-item>
-    <ion-item>
-      <ion-label position="floating">Email</ion-label>
-      <ion-input type="text" [(ngModel)]="loginEmail" name="usuario"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label position="floating">Contraseña</ion-label>
-      <ion-input type="text" [(ngModel)]="loginPassword"  name="password"></ion-input>
-    </ion-item>
-
-    <ion-button expand="block" (click)="create()">Registrar</ion-button>
-  </form>   
-  
+      <h4 class="textCenter textWhite">Email</h4>
+      <ion-item class="textCenter userInput textWhite">
+        <ion-label position="floating"></ion-label>
+        <ion-input type="text" [(ngModel)]="loginEmail" name="usuario"></ion-input>
+      </ion-item>
+      <h4 class="textCenter textWhite">Contraseña</h4>
+      <ion-item class="textCenter userInput textWhite">
+        <ion-label position="floating"></ion-label>
+        <ion-input type="text" [(ngModel)]="loginPassword" name="password"></ion-input>
+      </ion-item>
+    </form>
+    <div style="display: flex; justify-content: center;">
+      <ion-button id="loginButton" fill="clear" (click)="create()">Registrare</ion-button>
+  </div>
   </div>
 </ion-content>

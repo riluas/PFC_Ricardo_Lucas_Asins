@@ -14,7 +14,6 @@ import "firebase/auth";
 export class RegistroPage implements OnInit {
 
   ruta: string = "../../assets/img/FLORIDA-UNIVERSITARIA.png";
-
   createUsuario: IUsuarioCreate[];
   usuarios: IUsuario[] = [];
   id : number = 0;

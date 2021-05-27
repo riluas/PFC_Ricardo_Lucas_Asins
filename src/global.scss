@@ -54,4 +54,8 @@
 .bg-class{
     --background: linear-gradient(to right top, #9361d5, #8f5dd0, #8b5acb, #8856c7, #8453c2, #8150bf, #7e4ebc, #7b4bb9, #7848b7, #7645b4, #7342b2, #703fb0) !important;
   }
-  
+.userInput{
+    margin-left: 20px;
+    margin-right: 20px;
+    --ion-background-color: transparent;
+}

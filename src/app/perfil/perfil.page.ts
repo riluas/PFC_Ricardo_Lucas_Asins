@@ -62,7 +62,7 @@ export class PerfilPage implements OnInit {
   reload() {
     setTimeout(() => {
       this.ngOnInit();
-    }, 3000);
+    }, 1000);
     
   }
 
