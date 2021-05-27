@@ -50,10 +50,10 @@ create(){
 }
 
 login(){
+
   firebase.auth().signInWithEmailAndPassword(this.loginEmail, this.loginPassword)
   .then((user) => {
-    // Signed in
-    // ...
+    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
     alert("Correcto")
     this.provSer.setUser(this.loginEmail);    
     this.router.navigate(['/lanzamientos'])

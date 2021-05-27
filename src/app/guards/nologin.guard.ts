@@ -3,11 +3,13 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { SpaceServiceService } from '../space-service.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NologinGuard implements CanActivate {
+  provSer: SpaceServiceService;
   
   constructor(private AFauth: AngularFireAuth, private router: Router) { }
 
