@@ -10,13 +10,21 @@ export class SpaceServiceService {
   usuarios: IUsuario[] = []
   idLaunch: any;
   idRocket: any;
+  imgUrl: any;
 
   constructor(private _db: AngularFireDatabase) { }
 
-  getUser(){
+  getUserImage() {
+    return this.imgUrl;
+  }
+  setUserImage(imgUrl: string) {
+    this.imgUrl = imgUrl;
+  }
+
+  getUser() {
     return this.user
   }
-  setUser(user: string){
+  setUser(user: string) {
     this.user = user
   }
 
@@ -24,28 +32,27 @@ export class SpaceServiceService {
     let ref = this._db.database.ref("Usuarios");
     return ref;
   }
-  setUsuarios(usuarios: IUsuario){
+  setUsuarios(usuarios: IUsuario) {
     let ref = this._db.database.ref("Usuarios");
-   ref.push(usuarios);
- }
+    ref.push(usuarios);
+  }
 
- getFavoritos(): firebase.default.database.Reference {
-  let ref = this._db.database.ref("Favoritos");
-  return ref;
-}
+  getFavoritos(): firebase.default.database.Reference {
+    let ref = this._db.database.ref("Favoritos");
+    return ref;
+  }
 
-  setLaunchId(id){
+  setLaunchId(id) {
     this.idLaunch = id;
   }
-  getLaunchId(){
+  getLaunchId() {
     return this.idLaunch;
   }
 
-
-  setRocketId(id){
+  setRocketId(id) {
     this.idRocket = id;
   }
-  getRocketId(){
+  getRocketId() {
     return this.idRocket;
   }
 

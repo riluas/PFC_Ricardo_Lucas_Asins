@@ -15,16 +15,20 @@
   </ion-header>
 
   <div id="container">
-  <ion-avatar class="avatar">
-    <img src="https://imgur.com/0smMgMH.png">
-  </ion-avatar>
-  <p> <input class="file-input" type="file" name="resume"></p>
+    <input type="file" id="myFileInput" name="inputFile" (ionRefresh)="doRefresh($event)" (change)="upload($event)" accept="*.png.jpg" />
+        <ion-avatar class="avatar" onclick="document.getElementById('myFileInput').click()">
+          <img id="avatar" src={{ImagenUsuario}}>
+        </ion-avatar>
+
   <p><strong class="capitalize">Nombre</strong><span class="dataPerfil">{{nombreUsuarioIniciado}}</span></p>
   <hr class="line">
   <p><strong class="capitalize">Apellidos</strong><span class="dataPerfil">{{apellidosUsuarioIniciado}}</span></p>
   <hr class="line">
   <p><strong class="capitalize">Email</strong><span class="dataPerfil">{{UsuarioIniciado}}</span></p>
   <hr class="line">
+  <ion-button (click)="onLogout()" expand="block" fill="clear" shape="round">
+    Desconectarse
+  </ion-button>
 </div>
 </ion-content>
 
