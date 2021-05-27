@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { AlertController } from '@ionic/angular';
+import { AlertController, NavController } from '@ionic/angular';
 import { IUsuario, IUsuarioCreate } from '../interfaces';
 import {SpaceServiceService} from '../space-service.service'
 import firebase from "firebase/app";
@@ -27,7 +27,7 @@ export class RegistroPage implements OnInit {
   
 
  
-  constructor(public alertController: AlertController,   private _productoService : SpaceServiceService,public router: Router, public spaceServiceService: SpaceServiceService) {
+  constructor(public alertController: AlertController,   private _productoService : SpaceServiceService,public router: Router, public spaceServiceService: SpaceServiceService,private navCtrl:NavController) {
     this.provSer = spaceServiceService
   }
 
@@ -47,7 +47,11 @@ export class RegistroPage implements OnInit {
     });
     
   }
-  
+  goback() {
+    this.navCtrl.pop();
+   
+ }
+
   create(){
     firebase.auth().createUserWithEmailAndPassword(this.loginEmail, this.loginPassword)
     .then((user) => {

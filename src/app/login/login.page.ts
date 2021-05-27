@@ -4,7 +4,8 @@ import { AlertController } from '@ionic/angular';
 import firebase from "firebase/app";
 import "firebase/auth";
 import { IUsuario } from '../interfaces';
-import {SpaceServiceService} from '../space-service.service'
+import {SpaceServiceService} from '../space-service.service';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ import {SpaceServiceService} from '../space-service.service'
 })
 export class LoginPage implements OnInit {
 
-  imagenRuta: string = "../../assets/img/SpaceX_Launches_Logo_Negro.svg";
+  imagenRuta: string = "../../assets/img/SpaceX_Launches_Logo_Blanco.svg";
 
   createUsuario: IUsuario[];
   usuarios: IUsuario[] = [];
@@ -24,8 +25,11 @@ export class LoginPage implements OnInit {
   loginEmail: string = "";
   loginPassword: string = "";
 
-  constructor(public alertController: AlertController,   private _productoService : SpaceServiceService,public router: Router, public spaceServiceService: SpaceServiceService) {
+  constructor(public alertController: AlertController,   private _productoService : SpaceServiceService,public router: Router, public spaceServiceService: SpaceServiceService, private menuCtrl: MenuController) {
     this.provSer = spaceServiceService
+  }
+  ionViewWillEnter() {
+    this.menuCtrl.enable(false);
   }
 
 ngOnInit(){

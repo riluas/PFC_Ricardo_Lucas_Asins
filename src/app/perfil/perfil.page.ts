@@ -6,6 +6,7 @@ import { IUsuario } from '../interfaces';
 import { AngularFireStorage } from '@angular/fire/storage';
 import firebase from "firebase/app";
 import "firebase/auth";
+import { NgZone } from '@angular/core';
 @Component({
   selector: 'app-perfil',
   templateUrl: './perfil.page.html',
@@ -21,7 +22,7 @@ export class PerfilPage implements OnInit {
   path: String;
   ImagenUsuario: any
 
-  constructor(public alertController: AlertController, private _productoService: SpaceServiceService, public router: Router, public spaceServiceService: SpaceServiceService, private angularfirestorage: AngularFireStorage) {
+  constructor(public alertController: AlertController, private _productoService: SpaceServiceService, public router: Router, public spaceServiceService: SpaceServiceService, private angularfirestorage: AngularFireStorage, private zone: NgZone) {
     this.provSer = spaceServiceService
   }
 
@@ -48,37 +49,26 @@ export class PerfilPage implements OnInit {
     this.router.navigate(['/login'])
   }
 
+  fInput(){
+    document.getElementById("myFileInput").click()
+  }
+
   uploadImage() {
-    console.log(this.path);
     this.angularfirestorage.upload("/UserAvatar/" + this.UsuarioIniciado, this.path);
-    this.getUserImage2();
-    // location.reload();
+    this.reload();
+  }
+
+  // Recarga el componente para que salga la nueva imagen
+  reload() {
+    setTimeout(() => {
+      this.ngOnInit();
+    }, 3000);
+    
   }
 
   upload($event) {
     this.path = $event.target.files[0];
     this.uploadImage();
-  }
-
-  getUserImage2() {
-    this.angularfirestorage.ref("/UserAvatar").listAll().forEach(img => {
-      console.log(img.items.length);
-      for (let i = 0; i < img.items.length; i++) {
-        if (img.items[i].fullPath == "UserAvatar/" + this.UsuarioIniciado) {
-          this.angularfirestorage.ref('/UserAvatar/' + this.UsuarioIniciado).getDownloadURL().subscribe(imgUrl => {
-            alert("entras")
-            setTimeout(() => {
-              this.provSer.setUserImage(imgUrl);
-              this.ImagenUsuario = this.provSer.getUserImage();
-            }, 5000);
-
-          });
-        }
-        else {
-          (document.getElementById('avatar') as HTMLImageElement).src = 'https://www.divigear.com/wp-content/uploads/2020/08/Divi-Carousel-Module-coverflow.jpg';
-        }
-      }
-    })
   }
 
   getUserImage() {

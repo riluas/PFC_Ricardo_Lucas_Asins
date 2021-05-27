@@ -23,6 +23,7 @@ export class SeguidosPage implements OnInit {
     this.provSer = spaceService
   }
 
+
   ngOnInit() {
     let ref = this._productoService.getFavoritos();
     this.UsuarioIniciado = this.provSer.getUser();
@@ -76,6 +77,7 @@ export class SeguidosPage implements OnInit {
       });
       
   }
+
   countDownDate = new Date("2021-05-26T18:59:00.000Z").getTime();
   setLaunchId(id){
     this.provSer.setLaunchId(id);

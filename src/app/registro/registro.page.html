@@ -1,6 +1,12 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
+      <ion-buttons >
+        <button ion-button left class="loginnavbtn" (click)="goback()">
+          Cancel
+        </button>
+        <!-- left aligned content here -->
+        </ion-buttons>
       Registro
     </ion-title>
   </ion-toolbar>
@@ -8,7 +14,12 @@
 
 <ion-content [fullscreen]="true">
   <div id="container">
-
+    <ion-buttons >
+      <button ion-button left class="loginnavbtn" (click)="goback()">
+        Cancel
+      </button>
+      <!-- left aligned content here -->
+      </ion-buttons>
     <img [src]="ruta" [style.width.px]="width"/>
 
     <form>

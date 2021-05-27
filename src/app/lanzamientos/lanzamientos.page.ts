@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HTTP } from '@ionic-native/http/ngx';
+import { MenuController } from '@ionic/angular';
 import { SpaceServiceService } from '../space-service.service';
 @Component({
   selector: 'app-lanzamientos',
@@ -15,12 +16,14 @@ export class LanzamientosPage implements OnInit {
   provSer: SpaceServiceService;
   arrayDate: any[] = Array();
   newArrayDate: any[] = Array();
-  constructor(private http: HTTP, public spaceService: SpaceServiceService) {
+  constructor(private http: HTTP, public spaceService: SpaceServiceService, private menuCtrl: MenuController) {
     this.provSer = spaceService
   }
-
+  ionViewWillEnter() {
+    this.menuCtrl.enable(true);
+  }
   ngOnInit() {
-
+    
     this.http.get('https://api.spacexdata.com/v4/launches/upcoming', {}, {})
 
       .then(res => {

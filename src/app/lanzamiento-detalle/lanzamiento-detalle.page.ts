@@ -3,6 +3,7 @@ import { HTTP } from '@ionic-native/http/ngx';
 import { SpaceServiceService } from '../space-service.service';
 import { AngularFireDatabase } from "@angular/fire/database";
 import { IFavorito } from '../interfaces';
+import { NavController } from '@ionic/angular';
 @Component({
   selector: 'app-lanzamiento-detalle',
   templateUrl: './lanzamiento-detalle.page.html',
@@ -23,7 +24,7 @@ export class LanzamientoDetallePage implements OnInit {
   existe = false;
   rocketImage: any;
   infoLaunchpad: any;
-  constructor(private http: HTTP, public spaceService: SpaceServiceService, private _db: AngularFireDatabase) {
+  constructor(private http: HTTP, public spaceService: SpaceServiceService, private _db: AngularFireDatabase,private navCtrl:NavController) {
     this.provSer = spaceService
   }
 
@@ -63,17 +64,18 @@ export class LanzamientoDetallePage implements OnInit {
       })
 
     });
-    
+
+    this.navCtrl.navigateRoot('/home');
     this.http.get('https://api.spacexdata.com/v4/launchpads', {}, {})
 
-    .then(res => {
-      console.log(res + "HOLA");
-      this.infoLaunchpad = JSON.parse(res.data);
-      console.log(res.data); // Información recibida desde el server.
-    })
-    .catch(error => {
-      console.log(error.error); // Mensaje de error en una cadena.
-    });
+      .then(res => {
+        console.log(res + "HOLA");
+        this.infoLaunchpad = JSON.parse(res.data);
+        console.log(res.data); // Información recibida desde el server.
+      })
+      .catch(error => {
+        console.log(error.error); // Mensaje de error en una cadena.
+      });
 
     let ref2 = this.provSer.getFavoritos();
     ref2.orderByChild("usuario").equalTo(this.UsuarioIniciado).once("value", snapshot => {
@@ -88,7 +90,6 @@ export class LanzamientoDetallePage implements OnInit {
     });
 
   }
-
   getInfo(id) {
     this.infoLaunches.forEach(launch => {
       if (launch.id == id) {
@@ -113,7 +114,6 @@ export class LanzamientoDetallePage implements OnInit {
         console.log("He encontrado " + child.val().idLanzamiento);
       })
     });
-    //No entra al for
     console.log(this.favoritos.length);
     for (let i = 0; i < this.favoritos.length; i++) {
       console.log(this.favoritos[i]);
@@ -150,5 +150,6 @@ export class LanzamientoDetallePage implements OnInit {
       this.existe = false;
       this.meGustaIcon = false;
     }
+    
   }
 }

@@ -11,6 +11,7 @@ export class SpaceServiceService {
   idLaunch: any;
   idRocket: any;
   imgUrl: any;
+  init: any;
 
   constructor(private _db: AngularFireDatabase) { }
 

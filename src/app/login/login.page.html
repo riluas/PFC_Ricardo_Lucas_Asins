@@ -1,22 +1,22 @@
-<ion-content [fullscreen]="true">
-  <h1 id="title" class="ion-text-center">Spacex Launches</h1>
+<ion-content class="bg-class " [fullscreen]="true">
+  <h1 id="title" class="ion-text-center textWhite">Spacex Launches</h1>
   <div id="container">
     <img id="logo" [src]="imagenRuta"/>
     <form>
-    <ion-item class="userInput">
+    <ion-item class="userInput textWhite">
       <ion-label position="floating">Email</ion-label>
       <ion-input class="emailPassword" type="text" [(ngModel)]="loginEmail" name="email"></ion-input>
     </ion-item>
 
-    <ion-item class="userInput">
+    <ion-item class="userInput textWhite">
       <ion-label position="floating">Contraseña</ion-label>
       <ion-input class="emailPassword" type="password" [(ngModel)]="loginPassword"  name="password"></ion-input>
     </ion-item>
 
     <ion-grid>
-      <ion-row class="ion-align-items-center">
+      <ion-row class="ion-align-items-center textWhite">
         <ion-col size="12" class="ion-text-center">
-          <ion-button id="loginButton" color="dark" fill="outline" shape="round" (click)="login()">Iniciar Sesión</ion-button>
+          <ion-button id="loginButton" fill="clear" (click)="login()">Iniciar Sesión</ion-button>
           <p class="registerGuestText">¿Aún no tienes cuenta?</p>
           <ion-button class="registerGuest registerGuestText" fill="clear" (click)="create()">Registrate</ion-button>
           <p class="registerGuestText">O entra como</p>
