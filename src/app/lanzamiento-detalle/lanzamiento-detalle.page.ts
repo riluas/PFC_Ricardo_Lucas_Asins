@@ -25,14 +25,14 @@ export class LanzamientoDetallePage implements OnInit {
   invitado = false;
   rocketImage: any;
   infoLaunchpad: any;
-  constructor(private http: HTTP, public spaceService: SpaceServiceService, private _db: AngularFireDatabase,private navCtrl:NavController) {
+  constructor(private http: HTTP, public spaceService: SpaceServiceService, private _db: AngularFireDatabase, private navCtrl: NavController) {
     this.provSer = spaceService
   }
 
   ngOnInit() {
 
     this.UsuarioIniciado = this.provSer.getUser(); //recojo el usuario uniciado
-    if ( this.UsuarioIniciado == "guest@spacexlaunches.com") {
+    if (this.UsuarioIniciado == "guest@spacexlaunches.com") {
       this.invitado = true
     }
     this.idLaunch = this.provSer.getLaunchId(); //recojo la id de lanzamiento la cual se ha pulsado en "me gusta"
@@ -154,6 +154,6 @@ export class LanzamientoDetallePage implements OnInit {
       this.existe = false;
       this.meGustaIcon = false;
     }
-    
+
   }
 }

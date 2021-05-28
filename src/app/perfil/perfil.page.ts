@@ -30,7 +30,7 @@ export class PerfilPage implements OnInit {
   ngOnInit() {
     let refUsuario = this._productoService.getUsuarios();
     this.UsuarioIniciado = this.provSer.getUser();
-    if ( this.UsuarioIniciado == "guest@spacexlaunches.com") {
+    if (this.UsuarioIniciado == "guest@spacexlaunches.com") {
       this.invitado = true
     }
     refUsuario.once("value", snapshot => {
@@ -53,7 +53,7 @@ export class PerfilPage implements OnInit {
     this.router.navigate(['/login'])
   }
 
-  fInput(){
+  fInput() {
     document.getElementById("myFileInput").click()
   }
 
@@ -66,8 +66,8 @@ export class PerfilPage implements OnInit {
   reload() {
     setTimeout(() => {
       this.ngOnInit();
-    }, 1000);
-    
+    }, 1500);
+
   }
 
   upload($event) {
