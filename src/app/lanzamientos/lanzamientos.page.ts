@@ -63,13 +63,11 @@ export class LanzamientosPage implements OnInit {
         console.log(error.error); // Mensaje de error en una cadena.
       });
 
-
   }
   countDownDate = new Date("2021-05-26T18:59:00.000Z").getTime();
   setLaunchId(id) {
     this.provSer.setLaunchId(id);
   }
-
   demo: any
   x = setInterval(() => {
     this.newArrayDate = []
