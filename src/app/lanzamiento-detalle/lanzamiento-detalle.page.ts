@@ -22,6 +22,7 @@ export class LanzamientoDetallePage implements OnInit {
   arrayUsuariosFavoritos: any[] = Array();
   idUsuarioIniciado: number;
   existe = false;
+  invitado = false;
   rocketImage: any;
   infoLaunchpad: any;
   constructor(private http: HTTP, public spaceService: SpaceServiceService, private _db: AngularFireDatabase,private navCtrl:NavController) {
@@ -31,6 +32,9 @@ export class LanzamientoDetallePage implements OnInit {
   ngOnInit() {
 
     this.UsuarioIniciado = this.provSer.getUser(); //recojo el usuario uniciado
+    if ( this.UsuarioIniciado == "guest@spacexlaunches.com") {
+      this.invitado = true
+    }
     this.idLaunch = this.provSer.getLaunchId(); //recojo la id de lanzamiento la cual se ha pulsado en "me gusta"
     this.http.get('https://api.spacexdata.com/v4/launches/upcoming', {}, {})
 

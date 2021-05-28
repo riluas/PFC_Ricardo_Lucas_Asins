@@ -57,10 +57,14 @@
     --background: linear-gradient(to right top, #9361d5, #8f5dd0, #8b5acb, #8856c7, #8453c2, #8150bf, #7e4ebc, #7b4bb9, #7848b7, #7645b4, #7342b2, #703fb0) !important;
   }
 
+.bg-classRegister{
+    --background: linear-gradient(to right top,#e174eb, #c566dd, #a958ce, #8c4bbf, #703fb0) !important;
+    // --background: linear-gradient(to left top, #0016ff, #0027f4, #0031e8, #0038db, #003dce, #003cbf, #003bb0, #0039a1, #00328d, #002b7a, #002567, #011e55)!important;
+  }
 .bg-class{
-    // --background: linear-gradient(to right top,#e174eb, #c566dd, #a958ce, #8c4bbf, #703fb0) !important;
     --background: linear-gradient(to left top, #0016ff, #0027f4, #0031e8, #0038db, #003dce, #003cbf, #003bb0, #0039a1, #00328d, #002b7a, #002567, #011e55)!important;
   }
+
 .bg-classImageSpace{
     --background: url('/assets/img/pexels-picmambacom-755726.jpg') no-repeat center/cover fixed;
 }

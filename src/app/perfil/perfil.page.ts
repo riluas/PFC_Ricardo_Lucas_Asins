@@ -21,6 +21,7 @@ export class PerfilPage implements OnInit {
   apellidosUsuarioIniciado: any;
   path: String;
   ImagenUsuario: any
+  invitado = false;
 
   constructor(public alertController: AlertController, private _productoService: SpaceServiceService, public router: Router, public spaceServiceService: SpaceServiceService, private angularfirestorage: AngularFireStorage, private zone: NgZone) {
     this.provSer = spaceServiceService
@@ -29,6 +30,9 @@ export class PerfilPage implements OnInit {
   ngOnInit() {
     let refUsuario = this._productoService.getUsuarios();
     this.UsuarioIniciado = this.provSer.getUser();
+    if ( this.UsuarioIniciado == "guest@spacexlaunches.com") {
+      this.invitado = true
+    }
     refUsuario.once("value", snapshot => {
       snapshot.forEach(child => {
         let value = child.val();
