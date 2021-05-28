@@ -12,6 +12,11 @@ export class VehiculoDetallePage implements OnInit {
   data: any;
   provSer: SpaceServiceService;
   idRocket: any;
+  slideOptsOne = {
+    initialSlide: 0,
+    slidesPerView: 1,
+    autoplay:true
+   };
 
   constructor(private http: HTTP, public spaceService: SpaceServiceService) {
     this.provSer = spaceService
@@ -33,6 +38,5 @@ export class VehiculoDetallePage implements OnInit {
       console.log(error.headers);
     });
   }
-
 
 }

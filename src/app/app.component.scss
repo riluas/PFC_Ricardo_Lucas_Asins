@@ -112,7 +112,9 @@ ion-note {
 .item.sc-ion-label-md-h, .item .sc-ion-label-md-h {
   color: white;
 }
-
+.item.sc-ion-label-md-h.selected, .item .sc-ion-label-md-h.selected {
+  color: rgb(204, 25, 25);
+}
 ion-item.selected {
   --color: rgb(80, 80, 80);
 }

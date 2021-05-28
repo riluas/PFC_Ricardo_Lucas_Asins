@@ -8,7 +8,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="bg-class" [fullscreen]="true">
+<ion-content class="bg-classImageDarkSpace" [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Vehículo Detalle</ion-title>
@@ -17,20 +17,26 @@
 
   <div *ngFor="let rocket of data; let i = index">
     <div *ngIf='rocket.id == idRocket'>
-      <ion-slides pager="true" [options]="slideOpts">
+      <ion-slides pager="true" [options]="slideOptsOne">
         <ion-slide *ngFor="let rocketImg of rocket.flickr_images; let e = index">
           <img src='{{rocketImg}}' alt="">
         </ion-slide>
       </ion-slides>
-      <h1 class="textCenter">{{rocket.name}}</h1>
-      <p>Tipo: {{rocket.type}}</p>
-      <p>Altura: {{rocket.height.meters}}m</p>
-      <p>Diámetro: {{rocket.diameter.meters}}m</p>
-      <p>Peso: {{rocket.mass.kg}}kg</p>
-      <p>Costo por lanzamiento: {{rocket.cost_per_launch}}</p>
-      <p>Acierto: {{rocket.success_rate_pct}}%</p>
-      <p>Primer vuelo: {{rocket.first_flight | date: 'dd/MM/yyyy'}}</p>
-      <p>Descripción: {{rocket.description}}</p>
+      <ion-card class="card2">
+        <ion-card-header>
+          <ion-card-title class="ion-text-center">{{rocket.name}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p class="cardPGrey">Tipo: <span class="cardSpanFont">{{rocket.type}}</span></p>
+          <p class="cardPGrey">Altura: <span class="cardSpanFont">{{rocket.height.meters}}m</span></p>
+          <p class="cardPGrey">Diámetro: <span class="cardSpanFont">{{rocket.diameter.meters}}m</span></p>
+          <p class="cardPGrey">Peso: <span class="cardSpanFont">{{rocket.mass.kg}}kg</span></p>
+          <p class="cardPGrey">Costo por lanzamiento: <span class="cardSpanFont">{{rocket.cost_per_launch}}$</span></p>
+          <p class="cardPGrey">Acierto: <span class="cardSpanFont">{{rocket.success_rate_pct}}%</span></p>
+          <p class="cardPGrey">Primer vuelo: <span class="cardSpanFont">{{rocket.first_flight | date: 'dd/MM/yyyy'}}</span></p>
+          <p class="cardPGrey">Descripción: <span class="cardSpanFont">{{rocket.description}}</span></p>
+        </ion-card-content>
+      </ion-card>
     </div>
   </div>
 </ion-content>

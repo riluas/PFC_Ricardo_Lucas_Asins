@@ -8,14 +8,14 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="bg-class" [fullscreen]="true">
+<ion-content class="bg-classImageMilkyWay" [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">LanzamientoDetalle</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container" *ngFor="let launch of infoLaunches; let i = index">
+  <div class="textWhite" id="container" *ngFor="let launch of infoLaunches; let i = index">
     <div *ngIf='launch.id == idLaunch'>
       {{getInfo(idLaunch)}}
       <h1>{{launch.name}}</h1>
@@ -34,17 +34,24 @@
       </ion-button>
       <br>
       <br>
-      <p>Nombre: <span class="infoLanzamiento">{{launch.name}}</span></p>
-      <p>Cohete: <span class="infoLanzamiento">{{rocketName}}</span></p>
-      <div *ngFor="let launchpads of infoLaunchpad; let e = index">
-        <div *ngIf='launchpads.id == launch.launchpad'>
-          <p>Lanzamiento: <span class="infoLanzamiento">{{launchpads.locality}}, {{launchpads.region}}</span></p>
-        </div>
-      </div>
-      <p>Fecha: <span class="infoLanzamiento">{{launch.date_utc | date: 'dd/MM/yyyy'}}</span></p>
-      <p>Hora: <span class="infoLanzamiento">{{launch.date_utc | date: 'HH:mm'}}</span></p>
-      <P *ngIf='launch.details'>Descripción: <span class="infoLanzamiento">{{launch.details}}</span></P>
-      <P *ngIf='!launch.details'>Descripción: <span class="infoLanzamiento">-</span></P>
+      <ion-card class="card2">
+        <ion-card-header>
+          <ion-card-title style="text-align: center;">{{launch.name}}</ion-card-title>
+        </ion-card-header>
+      
+        <ion-card-content>
+          <div *ngFor="let launchpads of infoLaunchpad; let e = index">
+            <div *ngIf='launchpads.id == launch.launchpad'>
+              <p class="cardPGrey">Lugar: <span class="cardSpanFont">{{launchpads.locality}}, {{launchpads.region}}</span></p>
+            </div>
+          </div>
+          <p class="cardPGrey">Cohete: <span class="cardSpanFont">{{rocketName}}</span></p>
+          <p class="cardPGrey">Fecha:  <span class="cardSpanFont">{{launch.date_utc | date: 'dd/MM/yyyy'}}</span></p>
+          <p class="cardPGrey">Hora:  <span class="cardSpanFont">{{launch.date_utc | date: 'HH:mm'}}</span></p>
+          <p class="cardPGrey" *ngIf='launch.details'>Descripción: <span class="cardSpanFont">{{launch.details}}</span></p>
+          <p class="cardPGrey" *ngIf='!launch.details'>Descripción: -</p>
+        </ion-card-content>
+      </ion-card>
     </div>
   </div>
 </ion-content>
