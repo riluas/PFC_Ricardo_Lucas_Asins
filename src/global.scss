@@ -50,12 +50,29 @@
 .textWhite{
     color: white;
 }
+.textGrey{
+    color: #383838de;
+}
+.bg-classLogin{
+    --background: linear-gradient(to right top, #9361d5, #8f5dd0, #8b5acb, #8856c7, #8453c2, #8150bf, #7e4ebc, #7b4bb9, #7848b7, #7645b4, #7342b2, #703fb0) !important;
+  }
 
 .bg-class{
-    --background: linear-gradient(to right top, #9361d5, #8f5dd0, #8b5acb, #8856c7, #8453c2, #8150bf, #7e4ebc, #7b4bb9, #7848b7, #7645b4, #7342b2, #703fb0) !important;
+    --background: linear-gradient(to right top,#e174eb, #c566dd, #a958ce, #8c4bbf, #703fb0) !important;
+  }
+
+.bg-classTransparent{
+    --background: rgba(255, 125, 0, 0) !important;
+    background-color: transparent;
   }
 .userInput{
     margin-left: 20px;
     margin-right: 20px;
     --ion-background-color: transparent;
+}
+
+.card{
+    background-color: rgb(255 255 255 / 49%);
+    border-radius: 20px;
+
 }

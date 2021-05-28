@@ -7,14 +7,14 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content class="bg-class" [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Lanzamientos</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <ion-card *ngFor="let launch of infoLaunches; let i = index" (click)='setLaunchId(launch.id)'
+  <ion-card class="card" *ngFor="let launch of infoLaunches; let i = index" (click)='setLaunchId(launch.id)'
     [routerLink]="['/lanzamiento-detalle/',launch.id]">
     <ion-card-header id="cardHeader">
       <ion-card-title>{{launch.name}}</ion-card-title>
